@@ -41,8 +41,32 @@ class Main {
     System.out.println("in read file");
   }
   //Look for word in file
-  public static void lookFile()
+  public static void lookFile(String s)
   {
+    try
+    {
+      File f = new File(fileName);
+      Scanner fileReader = new Scanner(f);
+      boolean wordFound = false;
+      while(fileReader.hasNextLine())
+      {
+        if(fileReader.nextLine().equals(s))
+        {
+          wordFound = true;
+          System.out.println(s + " was found!");
+        }
+        
+      }
+      if(!wordFound)
+      {
+        System.out.println("Sorry, wasn't found");
+      }
+    }catch(Exception e)
+    {
+      System.out.println(e);
+    }
+
+    System.out.println("in read file");
     System.out.println("Look for a word");
   }
   public static void main(String[] args) {
@@ -67,7 +91,8 @@ class Main {
         addFile(input.nextLine());
       }else if(choice.equals("3"))
       {
-        lookFile();
+        System.out.println("What word: ");
+        lookFile(input.nextLine());
       }//end if
       
     }//end while loop
