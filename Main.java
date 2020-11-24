@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.io.FileWriter;   
 import java.io.IOException;  
+import java.io.File;
+import java.io.FileNotFoundException;
 /*
 Asks if you want to add to the file, read the whole file or look for a word in the file
 */
@@ -23,6 +25,19 @@ class Main {
   //Read whole file
   public static void readFile()
   {
+    try
+    {
+      File f = new File(fileName);
+      Scanner fileReader = new Scanner(f);
+      while(fileReader.hasNextLine())
+      {
+        System.out.println(fileReader.nextLine());
+      }
+    }catch(Exception e)
+    {
+      System.out.println(e);
+    }
+
     System.out.println("in read file");
   }
   //Look for word in file
